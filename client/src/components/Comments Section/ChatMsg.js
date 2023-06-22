@@ -6,22 +6,25 @@ import { useLocation } from "react-router-dom";
 
 import "./style.css";
 
-const ChatMsg = ({ msg, username }) => {
+const ChatMsg = ({ prevMsg, username }) => {
   const [messages, setMessages] = useState([]);
+  const [msg, setMessagesReceived] = useState([]);
   const scroll = useRef();
 
   useEffect(() => {
-    socket.on("last_100_messages", (msg) => {
-      console.log("Received from database is", msg); // Need to sort messages by Date here before displaying
-      /*  setMessagesReceived((state) => [
-      ...state,
-      {
-        message: data.message,
-        username: data.username,
-        __createdtime__: data.__createdtime__,
-      },
-    ]); */
+    socket.on("receive_message", (data) => {
+      console.log("Received msg is", data);
+      setMessagesReceived((state) => [
+        ...state,
+        {
+          message: data.message,
+          username: data.username,
+          __createdtime__: data.__createdtime__,
+        },
+      ]);
     });
+
+    return () => socket.off("receive_message");
   }, [socket]);
 
   return (
@@ -29,14 +32,23 @@ const ChatMsg = ({ msg, username }) => {
       <div className="heading">
         <h1>CHAT BOX</h1>
       </div>
+      <div className="prevMsg">
+        {prevMsg.map((msg) => {
+          return (
+            <>
+              <h2> {msg.message}</h2>
+              <h3> {msg.username}</h3>
+            </>
+          );
+        })}
+      </div>
       <div className="msg">
         {msg.map((msg, i) => {
-          {
-            console.log("Msg is", msg);
-          }
           return (
             <div key={i}>
-              <h1> Hi,{msg.message}</h1>
+              <h1>
+                Hi,{msg.message},{msg.username},{msg._createdtime_}
+              </h1>
             </div>
           );
         })}

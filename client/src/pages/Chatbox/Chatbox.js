@@ -4,11 +4,12 @@ import { socket } from "../../Socket/Socket";
 import { useAuth } from "../../context/AuthContext";
 
 export default function Chatbox() {
-  const [room, setRoom] = useState("Room 1");
-
+  const room = "Room 1";
+  const [prevMsg, setPrevMsg] = useState([]);
   const [messagesRecieved, setMessagesReceived] = useState([]);
-  const { user } = useAuth();
-  const [username, setUsername] = useState(user);
+  const [newUser, enterNewUser] = useState();
+
+  const username = localStorage.getItem("username");
 
   const enableChatbox = () => {
     socket.emit("join_room", { room, username });
@@ -18,6 +19,23 @@ export default function Chatbox() {
   }, []);
 
   useEffect(() => {
+    socket.on("last_100_messages", (msg) => {
+      console.log("Received from database is", msg);
+      setPrevMsg(msg);
+
+      // Need to sort messages by Date here before displaying
+      /*  setMessagesReceived((state) => [
+      ...state,
+      {
+        message: data.message,
+        username: data.username,
+        __createdtime__: data.__createdtime__,
+      },
+    ]); */
+    });
+  }, [socket]);
+
+  /* useEffect(() => {
     socket.on("receive_message", (data) => {
       console.log("Received msg is", data);
       setMessagesReceived((state) => [
@@ -30,14 +48,21 @@ export default function Chatbox() {
       ]);
     });
 
-    //Remove event listener on component unmount
     return () => socket.off("receive_message");
-  }, [socket]);
+  }, [socket]); */
 
   return (
     <div>
-      {console.log("User is", messagesRecieved)}
-      <ChatMsg msg={messagesRecieved} username={username} />
+      {/* {console.log("Messi is", prevMsg)} */}
+      {/* {prevMsg.map((msg) => {
+        return (
+          <>
+            <p> {msg.message}</p>
+            <p> {msg.username}</p>
+          </>
+        );
+      })} */}
+      <ChatMsg prevMsg={prevMsg} username={username} />
     </div>
   );
 }

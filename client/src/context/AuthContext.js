@@ -25,6 +25,7 @@ export function AuthProvider({ children }) {
     setLoggedIn(value);
   }
   function userHandler(value) {
+    console.log("Value is", value);
     setUser(value);
   }
 

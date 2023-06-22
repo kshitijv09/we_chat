@@ -33,17 +33,6 @@ app.use("/user", authenticateUser, chatRouter);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
-/* const io = socketIO(process.env.PORT);
-
-io.on("connection", (socket) => {
-  console.log(`User connected ${socket.id}`);
-
-  // We can write our socket event listeners in here...
-}); */
-/* io.on("connection", (socket) => {
-  console.log("A client connected.");
-}); */
-
 const io = new Server(server, {
   cors: {
     origin: "http://localhost:3000",

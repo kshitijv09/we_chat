@@ -44,7 +44,8 @@ export default function Login() {
         // Save the auth token and redirect
         loginHandler(true);
         localStorage.setItem("token", JSON.stringify(response.data.token));
-        userHandler(response.data.user.name);
+        localStorage.setItem("username", emailRef.current.value);
+        userHandler(emailRef.current.value);
         /*  socket.emit("join_room", { msg: "Joining Chatbox" }); */
         //socket.emit("join_room", { room, username });
         navigate("/messages");
