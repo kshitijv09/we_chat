@@ -15,6 +15,7 @@ export default function Login() {
 
   const emailRef = useRef();
   const passwordRef = useRef();
+  const userNameRef = useRef();
   const { loginHandler, userHandler } = useAuth();
 
   const [error, setError] = useState("");
@@ -44,7 +45,7 @@ export default function Login() {
         // Save the auth token and redirect
         loginHandler(true);
         localStorage.setItem("token", JSON.stringify(response.data.token));
-        localStorage.setItem("username", emailRef.current.value);
+        localStorage.setItem("username", userNameRef.current.value);
         userHandler(emailRef.current.value);
         /*  socket.emit("join_room", { msg: "Joining Chatbox" }); */
         //socket.emit("join_room", { room, username });
@@ -65,6 +66,10 @@ export default function Login() {
             <h2 className="text-center mb-4">Log In</h2>
             {error && <Alert variant="danger">{error}</Alert>}
             <Form onSubmit={handleSubmit}>
+              <Form.Group id="username">
+                <Form.Label>Username</Form.Label>
+                <Form.Control type="text" ref={userNameRef} required />
+              </Form.Group>
               <Form.Group id="email">
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email" ref={emailRef} required />

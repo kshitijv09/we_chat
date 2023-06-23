@@ -16,14 +16,6 @@ const ChatMsg = ({ prevMsg, username }) => {
     socket.on("receive_message", (data) => {
       console.log("Received msg is", data);
       setMessagesReceived(data);
-      /* setMessagesReceived((state) => [
-        ...state,
-        {
-          message: data.message,
-          username: data.username,
-          __createdtime__: data.__createdtime__,
-        },
-      ]); */
     });
 
     return () => socket.off("receive_message");
@@ -49,20 +41,19 @@ const ChatMsg = ({ prevMsg, username }) => {
   return (
     <main className="chat-box">
       <div className="heading">
-        <h1>CHAT BOX</h1>
+        <h1>WE CHAT</h1>
       </div>
       <div className="prevMsg">
-        {prevMsg.map((msg) => {
+        {prevMsg.map((msg, index) => {
           return (
             <>
-              {/*  <h2> {msg.message}</h2>
-              <h3> {msg.username}</h3> */}
               <div
                 className={`chat-bubble ${
                   msg.username === localStorage.getItem("username")
                     ? "right"
                     : ""
                 }`}
+                key={index}
               >
                 {/* <img
         className="chat-bubble__left"
@@ -72,7 +63,7 @@ const ChatMsg = ({ prevMsg, username }) => {
                 <div className="chat-bubble__right">
                   <p className="user-name">{msg.username}</p>
                   <p className="user-message">{msg.message}</p>
-                  <p> {msg.createdtime}</p>
+                  <p className="message-time"> {msg.createdtime}</p>
                 </div>
               </div>
             </>
@@ -80,14 +71,11 @@ const ChatMsg = ({ prevMsg, username }) => {
         })}
       </div>
       <div className="msg">
-        {/* {msg.map((msg, i) => {
-          return (
-            <div key={i}> */}
-        <h1>
-          Hi,{msg.message},{msg.username},{msg._createdtime_}
-        </h1>
+        <div className="welcome">
+          <h1>{msg.message}</h1>{" "}
+        </div>
         {console.log("ON consoling", chat)}
-        {chat.map((msg) => {
+        {chat.map((msg, index) => {
           return (
             <>
               <div
@@ -96,6 +84,7 @@ const ChatMsg = ({ prevMsg, username }) => {
                     ? "right"
                     : ""
                 }`}
+                key={index}
               >
                 {/* <img
         className="chat-bubble__left"
@@ -105,20 +94,20 @@ const ChatMsg = ({ prevMsg, username }) => {
                 <div className="chat-bubble__right">
                   <p className="user-name">{msg.username}</p>
                   <p className="user-message">{msg.message}</p>
-                  <p className="user-message">{msg.createdtime}</p>
+                  <p className="message-time">{msg.createdtime}</p>
                 </div>
               </div>
             </>
           );
         })}
       </div>
-      <div className="messages-wrapper">
+      {/* <div className="messages-wrapper">
         {messages?.map((message) => (
           <Message key={message.id} message={message} />
         ))}
-      </div>
+      </div> */}
       {/* when a new message enters the chat, the screen scrolls down to the scroll div */}
-      <span ref={scroll}></span>
+      <div ref={scroll}></div>
       <SendMessage scroll={scroll} username={username} />
     </main>
   );

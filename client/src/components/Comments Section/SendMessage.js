@@ -10,25 +10,25 @@ const SendMessage = ({ scroll, username }) => {
   const [room, setRoom] = useState("Room 1");
   const sendMessage = (e) => {
     e.preventDefault();
-    if (message !== "") {
-      const date = new Date();
-      const createdtime = `${date.getHours()}:${date.getMinutes()}`;
-      console.log("time is", createdtime);
-      // Send message to server. We can't specify who we send the message to from the frontend. We can only send to server. Server can then send message to rest of users in room
-      socket.emit("send_message", { username, room, message, createdtime });
-      setMessage("");
-    }
-  };
 
-  /* const sendMessage = async (event) => {
-    event.preventDefault();
     if (message.trim() === "") {
       alert("Enter valid message");
       return;
     }
 
+    /* setMessage(""); */
+
+    const date = new Date();
+    const createdtime = `${date.getHours()}:${date.getMinutes()}`;
+    console.log("time is", createdtime);
+    // Send message to server. We can't specify who we send the message to from the frontend. We can only send to server. Server can then send message to rest of users in room
+    socket.emit("send_message", { username, room, message, createdtime });
     setMessage("");
     scroll.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  /* const sendMessage = async (event) => {
+    
   }; */
   return (
     <form onSubmit={(event) => sendMessage(event)} className="send-message">
