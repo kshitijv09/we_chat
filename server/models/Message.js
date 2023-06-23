@@ -13,11 +13,11 @@ const MsgSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  /* createdAt: {
-    type: Date,
-    default: Date.now,
+  createdtime: {
+    type: String,
+    default: `${new Date().getHours()}:${new Date().getMinutes()}`,
   },
-  timestamps: {
+  /* timestamps: {
     createdAt: true,
     updatedAt: false,
   }, */

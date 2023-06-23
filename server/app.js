@@ -63,7 +63,7 @@ io.on("connection", (socket) => {
     async function fetchMessages() {
       try {
         const prevMessages = await getMessages();
-        console.log(prevMessages);
+        /* console.log(prevMessages); */
         socket.emit("last_100_messages", prevMessages);
         // Process or display the fetched messages as needed
       } catch (error) {
@@ -94,11 +94,12 @@ io.on("connection", (socket) => {
   // Add this
   // Save the new user to the room
   socket.on("send_message", (data) => {
-    const { message, username, room, __createdtime__ } = data;
+    const { message, username, room, createdtime } = data;
     console.log("On send message", data);
     const newMessage = new Message({
       username,
       message,
+      createdtime,
     });
 
     // Save the message to the database
@@ -106,12 +107,12 @@ io.on("connection", (socket) => {
       .save()
       .then(() => {
         // Emit the message to all connected clients, including the sender
-        console.log(newMessage);
+        console.log("New Message is", newMessage);
       })
       .catch((error) => {
         console.error("Error saving message:", error);
       });
-    io.in(room).emit("receive_message", data);
+    io.in(room).emit("receive_chat", data);
     // Send to all users in room, including sender
   });
 });
