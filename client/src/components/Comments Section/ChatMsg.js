@@ -8,7 +8,7 @@ import "./style.css";
 
 const ChatMsg = ({ prevMsg, username }) => {
   const [messages, setMessages] = useState([]);
-  const [msg, setMessagesReceived] = useState({});
+  const [msg, setMessagesReceived] = useState({ message: "F You" });
   const [chat, setChatReceived] = useState([]);
   const scroll = useRef();
 
@@ -37,6 +37,10 @@ const ChatMsg = ({ prevMsg, username }) => {
 
     return () => socket.off("receive_chat");
   }, []);
+
+  /*  useEffect(() => {
+    console.log("Msg in state is", msg);
+  }, [msg]); */
 
   return (
     <main className="chat-box">
@@ -72,9 +76,10 @@ const ChatMsg = ({ prevMsg, username }) => {
       </div>
       <div className="msg">
         <div className="welcome">
-          <h1>{msg.message}</h1>{" "}
+          {/* {console.log("Welcome msg is", msg.message)} */}
+          <h1>{msg.message}</h1>
         </div>
-        {console.log("ON consoling", chat)}
+        {/* {console.log("ON consoling", chat)} */}
         {chat.map((msg, index) => {
           return (
             <>
