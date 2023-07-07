@@ -8,7 +8,7 @@ const app = express();
 const socketIO = require("socket.io");
 const { Server } = require("socket.io");
 
-const getMessages = require("./controllers/messageController");
+const getMessages = require("./controllers/conversationController");
 
 const Message = require("./models/Message");
 
@@ -28,7 +28,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/auth", authRouter);
-app.use("/user", authenticateUser, chatRouter);
+app.use("/user", /* authenticateUser, */ chatRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
@@ -73,14 +73,15 @@ io.on("connection", (socket) => {
 
     // Invoke the function
     fetchMessages();
-   
+
     socket.emit("receive_message", {
       message: `Welcome ${username}`,
       username: CHAT_BOT,
       __createdtime__,
     });
     //
-    socket.to(room).emit("receive_message", { // Send message to all users currently in the room, apart from the user that just joined
+    socket.to(room).emit("receive_message", {
+      // Send message to all users currently in the room, apart from the user that just joined
       message: `${username} has joined the chat room`,
       username: CHAT_BOT,
       __createdtime__,

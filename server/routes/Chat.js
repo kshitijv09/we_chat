@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
-
-router.route("/chatbox").get().post();
+const conversation = require("../controllers/conversationController");
+router
+  .route("/chatbox/:userName/:contactName")
+  .get(conversation.getConversation);
 
 module.exports = router;
