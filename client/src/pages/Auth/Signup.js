@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import Modal from "../UI/Modal/Modal";
+import Modal from "../../UI/Modal/Modal";
 
 export default function Signup() {
   const usernameRef = useRef();

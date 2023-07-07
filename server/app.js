@@ -73,14 +73,14 @@ io.on("connection", (socket) => {
 
     // Invoke the function
     fetchMessages();
-    // Send message to all users currently in the room, apart from the user that just joined
+   
     socket.emit("receive_message", {
       message: `Welcome ${username}`,
       username: CHAT_BOT,
       __createdtime__,
     });
     //
-    socket.to(room).emit("receive_message", {
+    socket.to(room).emit("receive_message", { // Send message to all users currently in the room, apart from the user that just joined
       message: `${username} has joined the chat room`,
       username: CHAT_BOT,
       __createdtime__,

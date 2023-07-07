@@ -1,14 +1,18 @@
 const mongoose = require("mongoose");
 
-const MsgSchema = new mongoose.Schema({
-  username: {
+const MessageSchema = new mongoose.Schema({
+  sender: {
     type: String,
-    required: false,
+    required: true,
   },
   /* user_avatar: {
     type: String,
     required: false,
   }, */
+  receiver: {
+    type: String,
+    required: true,
+  },
   message: {
     type: String,
     required: true,
@@ -23,4 +27,4 @@ const MsgSchema = new mongoose.Schema({
   }, */
 });
 
-module.exports = mongoose.model("Message", MsgSchema);
+module.exports = mongoose.model("Message", MessageSchema);

@@ -1,8 +1,13 @@
-const Message = require("../models/Message");
+const Conversation = require("../models/Conversation");
 
-const getMessages = async () => {
-  const data = await Message.find({});
-  return data;
+const getConversation = async (req, res) => {
+  const contactName = req.params.contactName;
+  try {
+    const conversation = await Conversation.find({ contactName });
+    res.json({ conversation });
+  } catch {
+    console.log("Error retrieving conversations:", err);
+    res.sendStatus(500);
+  }
 };
-
-module.exports = getMessages;
+module.exports = { getConversation };

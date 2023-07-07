@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "bcrypt": "^5.1.0",
-    "jsonwebtoken": "^9.0.0",
-    "react-router": "^6.12.1"
-  }
-}

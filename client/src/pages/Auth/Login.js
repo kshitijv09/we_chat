@@ -2,9 +2,9 @@ import React, { useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import Modal from "../UI/Modal/Modal";
-import { useAuth } from "../context/AuthContext";
-import { socket } from "../Socket/Socket";
+import Modal from "../../UI/Modal/Modal";
+import { useAuth } from "../../context/AuthContext";
+import { socket } from "../../Socket/Socket";
 
 /* import { io } from "socket.io-client";
 
@@ -49,7 +49,7 @@ export default function Login() {
         userHandler(emailRef.current.value);
         /*  socket.emit("join_room", { msg: "Joining Chatbox" }); */
         //socket.emit("join_room", { room, username });
-        navigate("/messages");
+        navigate("/dashboard");
       } else {
         alert("Invalid credentials");
       }
