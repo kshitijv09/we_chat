@@ -7,4 +7,4 @@ Messages are being stores as sender , receiver, timestamp and meesage text
 Collection Name is the Sender's name
 4- Add new users/groups
 
-This app is gonna take hell of a long time to build
+This app is gonna take hell of a long time to build.
