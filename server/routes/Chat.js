@@ -6,4 +6,6 @@ router
   .get(conversation.getConversation)
   .post(conversation.addConversation);
 
+router.route("/chatbox/:userName").get(conversation.getContacts);
+
 module.exports = router;

@@ -70,4 +70,19 @@ const addConversation = async (req, res) => {
   }
 };
 
-module.exports = { getConversation, addConversation };
+const getContacts = async (req, res) => {
+  //const contactName = req.params.contactName;
+  const userName = req.params.userName;
+  //console.log("userName is,", userName);
+  const Conversation = ConversationModel(userName);
+  const conversations = await Conversation.find();
+  const contacts = [];
+
+  conversations.forEach((element) => {
+    contacts.push(element.contactName);
+  });
+  //console.log("Set is", contacts);
+  res.json({ contacts });
+};
+
+module.exports = { getConversation, addConversation, getContacts };
