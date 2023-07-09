@@ -38,7 +38,7 @@ export default function Login() {
         "http://localhost:5001/auth/login",
         userData
       );
-      console.log(response);
+      //console.log(response);
       /* const data = await response.json();
       console.log(data); */
       if (response.status === 200) {

@@ -28,7 +28,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/auth", authRouter);
-app.use("/user", /* authenticateUser, */ chatRouter);
+app.use("/user", authenticateUser, chatRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
