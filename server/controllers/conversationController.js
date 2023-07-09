@@ -10,7 +10,7 @@ const getConversation = async (req, res) => {
     // console.log("Contact Name is", contactName);
     const conversation = await Conversation.find({ contactName });
     console.log("Convo is", conversation);
-    res.json({ conversation });
+    res.json(conversation);
   } catch {
     console.log("Error retrieving conversations:", err);
     res.sendStatus(500);
