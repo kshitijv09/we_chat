@@ -95,12 +95,10 @@ io.on("connection", (socket) => {
   // Add this
   // Save the new user to the room
   socket.on("send_message", (data) => {
-    const { message, username, room, createdtime } = data;
+    const { sender, receiver, message, createdTime } = data;
     console.log("On send message", data);
-    const newMessage = new Message({
-      username,
-      message,
-      createdtime,
+    /*  const newMessage = new Message({
+      sender,receiver,message,createdTime
     });
 
     // Save the message to the database
@@ -113,7 +111,7 @@ io.on("connection", (socket) => {
       .catch((error) => {
         console.error("Error saving message:", error);
       });
-    io.in(room).emit("receive_chat", data);
+    io.in(room).emit("receive_chat", data); */
     // Send to all users in room, including sender
   });
 });

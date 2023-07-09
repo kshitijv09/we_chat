@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import SendMessage from "./SendMessage";
 
 export default function ChatPage({ contact }) {
   const [chat, setChatReceived] = useState([]);
@@ -18,13 +19,85 @@ export default function ChatPage({ contact }) {
           },
         }
       );
-      console.log("Res is", res.data[0].message);
-      setChatReceived(res.data.message);
+      // console.log("Res is", res.data[0].message);
+      setChatReceived(res.data[0].message);
     }
   };
 
   useEffect(() => {
     fetchConversation();
   }, [contact]);
-  return <div> contact value is {contact}</div>;
+
+  return (
+    <main className="chat-box">
+      <div className="heading">
+        <h1>WE CHAT</h1>
+      </div>
+      <div className="prevMsg">
+        {chat.map((msg, index) => {
+          return (
+            <>
+              <div
+                className={`chat-bubble ${
+                  msg.sender === localStorage.getItem("username") ? "right" : ""
+                }`}
+                key={index}
+              >
+                {/* <img
+    className="chat-bubble__left"
+    src={msg.avatar}
+    alt="user avatar"
+  /> */}
+                <div className="chat-bubble__right">
+                  <p className="user-name">{msg.sender}</p>
+                  <p className="user-message">{msg.message}</p>
+                  <p className="message-time"> {msg.createdTime}</p>
+                </div>
+              </div>
+            </>
+          );
+        })}
+      </div>
+      {/* <div className="msg">
+    <div className="welcome">
+     
+      <h1>{msg.message}</h1>
+    </div>
+    
+    {chat.map((msg, index) => {
+      return (
+        <>
+          <div
+            className={`chat-bubble ${
+              msg.sender === localStorage.getItem("username")
+                ? "right"
+                : ""
+            }`}
+            key={index}
+          >
+            {img
+    className="chat-bubble__left"
+    src={msg.avatar}
+    alt="user avatar"
+  /> 
+            <div className="chat-bubble__right">
+              <p className="user-name">{msg.username}</p>
+              <p className="user-message">{msg.message}</p>
+              <p className="message-time">{msg.createdtime}</p>
+            </div>
+          </div>
+        </>
+      );
+    })}
+  </div>
+  {<div className="messages-wrapper">
+    {messages?.map((message) => (
+      <Message key={message.id} message={message} />
+    ))}
+  </div>}
+  when a new message enters the chat, the screen scrolls down to the scroll div
+    <div ref={scroll}></div>*/}
+      <SendMessage receiver={contact} />
+    </main>
+  );
 }
