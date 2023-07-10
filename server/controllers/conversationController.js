@@ -73,7 +73,7 @@ const addConversation = async (req, res) => {
 const getContacts = async (req, res) => {
   //const contactName = req.params.contactName;
   const userName = req.params.userName;
-  //console.log("userName is,", userName);
+  //console.log("userName is,", userName);s
   const Conversation = ConversationModel(userName);
   const conversations = await Conversation.find();
   const contacts = [];

@@ -43,76 +43,32 @@ const io = new Server(server, {
 const CHAT_BOT = "Chatbot";
 let allUsers = [];
 let chatRoomUsers = [];
+const connectedUsers = new Map();
 
 // Add this
 // Listen for when the client connects via socket.io-client
 io.on("connection", (socket) => {
   console.log(`User connected ${socket.id}`);
-  // ...
-  socket.on("join_room", (data) => {
-    const { username, room } = data; // Data sent from client when join_room event emitted
-    console.log(username, room);
-    socket.join(room); // Join the user to a socket room
 
-    // Add this
-    let __createdtime__ = Date.now(); // Current timestamp
-
-    /* const msgs = getMessages();
-    console.log("Data from database is", msgs); */
-
-    async function fetchMessages() {
-      try {
-        const prevMessages = await getMessages();
-        /* console.log(prevMessages); */
-        socket.emit("last_100_messages", prevMessages);
-        // Process or display the fetched messages as needed
-      } catch (error) {
-        console.error("Failed to fetch messages:", error);
-      }
-    }
-
-    // Invoke the function
-    fetchMessages();
-
-    socket.emit("receive_message", {
-      message: `Welcome ${username}`,
-      username: CHAT_BOT,
-      __createdtime__,
-    });
-    //
-    socket.to(room).emit("receive_message", {
-      // Send message to all users currently in the room, apart from the user that just joined
-      message: `${username} has joined the chat room`,
-      username: CHAT_BOT,
-      __createdtime__,
-    });
-    chatRoom = room;
-    allUsers.push({ id: socket.id, username, room });
-    chatRoomUsers = allUsers.filter((user) => user.room === room);
-    socket.to(room).emit("chatroom_users", chatRoomUsers);
-    socket.emit("chatroom_users", chatRoomUsers);
+  socket.on("user_joined", (data) => {
+    const { username } = data;
+    connectedUsers.set(username, socket.id);
+    console.log(connectedUsers);
   });
-  // Add this
-  // Save the new user to the room
+
   socket.on("send_message", (data) => {
     const { sender, receiver, message, createdTime } = data;
-    console.log("On send message", data);
-    /*  const newMessage = new Message({
-      sender,receiver,message,createdTime
-    });
-
-    // Save the message to the database
-    newMessage
-      .save()
-      .then(() => {
-        // Emit the message to all connected clients, including the sender
-        console.log("New Message is", newMessage);
-      })
-      .catch((error) => {
-        console.error("Error saving message:", error);
+    console.log("On send message", connectedUsers.get(receiver));
+    const connectedId = connectedUsers.get(receiver);
+    if (connectedId) {
+      io.to(connectedId).emit("receive_message", {
+        sender,
+        receiver,
+        message,
+        createdTime,
       });
-    io.in(room).emit("receive_chat", data); */
-    // Send to all users in room, including sender
+    }
+    socket.emit("receive_message", { sender, receiver, message, createdTime });
   });
 });
 

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SendMessage from "./SendMessage";
+import { socket } from "../../Socket/Socket";
 
 export default function ChatPage({ contact }) {
   const [chat, setChatReceived] = useState([]);
+  const [message, setMessageReceived] = useState([]);
 
   const fetchConversation = async () => {
     if (contact) {
@@ -23,6 +25,19 @@ export default function ChatPage({ contact }) {
       setChatReceived(res.data[0].message);
     }
   };
+
+  const receiveMessage = (data) => {
+    console.log("Yolo msg is", data);
+  };
+  /* socket.on("receive_message", (data) => {
+    console.log("Halleluah", data);
+    return socket.off("receive_message");
+  }); */
+
+  useEffect(() => {
+    socket.on("receive_message", receiveMessage);
+    /*  return socket.off("receive_message", receiveMessage); */
+  }, [socket]);
 
   useEffect(() => {
     fetchConversation();
