@@ -28,6 +28,15 @@ export default function ChatPage({ contact }) {
 
   const receiveMessage = (data) => {
     console.log("Yolo msg is", data);
+    setMessageReceived((event) => [
+      ...event,
+      {
+        sender: data.sender,
+        receiver: data.receiver,
+        message: data.message,
+        createdTime: data.createdTime,
+      },
+    ]);
   };
   /* socket.on("receive_message", (data) => {
     console.log("Halleluah", data);
@@ -36,7 +45,10 @@ export default function ChatPage({ contact }) {
 
   useEffect(() => {
     socket.on("receive_message", receiveMessage);
-    /*  return socket.off("receive_message", receiveMessage); */
+    return () => {
+      // Clean up the event listener when the component unmounts
+      socket.off("receive_message", receiveMessage);
+    };
   }, [socket]);
 
   useEffect(() => {
@@ -73,45 +85,43 @@ export default function ChatPage({ contact }) {
           );
         })}
       </div>
-      {/* <div className="msg">
-    <div className="welcome">
-     
-      <h1>{msg.message}</h1>
-    </div>
-    
-    {chat.map((msg, index) => {
-      return (
-        <>
-          <div
-            className={`chat-bubble ${
-              msg.sender === localStorage.getItem("username")
-                ? "right"
-                : ""
-            }`}
-            key={index}
-          >
-            {img
+      <div className="msg">
+        {/* <div className="welcome">
+          <h1>{msg.message}</h1>
+        </div> */}
+
+        {message.map((msg, index) => {
+          return (
+            <>
+              <div
+                className={`chat-bubble ${
+                  msg.sender === localStorage.getItem("username") ? "right" : ""
+                }`}
+                key={index}
+              >
+                {/* {img
     className="chat-bubble__left"
     src={msg.avatar}
     alt="user avatar"
-  /> 
-            <div className="chat-bubble__right">
-              <p className="user-name">{msg.username}</p>
-              <p className="user-message">{msg.message}</p>
-              <p className="message-time">{msg.createdtime}</p>
-            </div>
-          </div>
-        </>
-      );
-    })}
-  </div>
-  {<div className="messages-wrapper">
+  />  */}
+                <div className="chat-bubble__right">
+                  <p className="user-name">{msg.sender}</p>
+                  <p className="user-message">{msg.message}</p>
+                  <p className="message-time">{msg.createdTime}</p>
+                </div>
+              </div>
+            </>
+          );
+        })}
+      </div>
+      {/* {<div className="messages-wrapper">
     {messages?.map((message) => (
       <Message key={message.id} message={message} />
     ))}
-  </div>}
-  when a new message enters the chat, the screen scrolls down to the scroll div
-    <div ref={scroll}></div>*/}
+  </div>} */}
+      {/* when a new message enters the chat, the screen scrolls down to the scroll
+      div
+      <div ref={scroll}></div> */}
       <SendMessage receiver={contact} />
     </main>
   );

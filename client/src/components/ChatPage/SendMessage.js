@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import axios from "axios";
 //import { useAuth } from "../../context/AuthContext";
 import "./ChatPage.css";
 import { socket } from "../../Socket/Socket";
@@ -10,6 +10,27 @@ const SendMessage = ({ receiver }) => {
   const [message, setMessage] = useState("");
   //  const { currentUser } = useAuth();
   //const [room, setRoom] = useState("Room 1");
+
+  const enterData = async (messageData) => {
+    await axios.post(
+      `http://localhost:5001/user/chatbox/${sender}/${receiver}`,
+      messageData,
+      {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+        },
+      }
+    );
+    await axios.post(
+      `http://localhost:5001/user/chatbox/${receiver}/${sender}`,
+      messageData,
+      {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+        },
+      }
+    );
+  };
 
   const sendMessage = (e) => {
     e.preventDefault();
@@ -24,8 +45,16 @@ const SendMessage = ({ receiver }) => {
     const date = new Date();
     const createdTime = `${date.getHours()}:${date.getMinutes()}`;
     console.log("time is", createdTime);
+    const messageData = {
+      sender,
+      receiver,
+      message,
+      createdTime,
+    };
+    enterData(messageData);
     // Send message to server. We can't specify who we send the message to from the frontend. We can only send to server. Server can then send message to rest of users in room
     socket.emit("send_message", { sender, receiver, message, createdTime });
+
     setMessage("");
     //scroll.current.scrollIntoView({ behavior: "smooth" });
   };
