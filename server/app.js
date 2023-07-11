@@ -5,12 +5,7 @@ const authenticateUser = require("./middleware/authentication");
 const cors = require("cors");
 const http = require("http");
 const app = express();
-const socketIO = require("socket.io");
 const { Server } = require("socket.io");
-
-const getMessages = require("./controllers/conversationController");
-
-const Message = require("./models/Message");
 
 require("dotenv").config();
 require("express-async-errors");

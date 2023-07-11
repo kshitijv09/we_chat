@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-//import { useAuth } from "../../context/AuthContext";
+
 import "./ChatPage.css";
 import { socket } from "../../Socket/Socket";
 
@@ -8,8 +8,6 @@ const SendMessage = ({ receiver }) => {
   const sender = localStorage.getItem("username");
 
   const [message, setMessage] = useState("");
-  //  const { currentUser } = useAuth();
-  //const [room, setRoom] = useState("Room 1");
 
   const enterData = async (messageData) => {
     await axios.post(
@@ -40,8 +38,6 @@ const SendMessage = ({ receiver }) => {
       return;
     }
 
-    /* setMessage(""); */
-
     const date = new Date();
     const createdTime = `${date.getHours()}:${date.getMinutes()}`;
     console.log("time is", createdTime);
@@ -59,9 +55,6 @@ const SendMessage = ({ receiver }) => {
     //scroll.current.scrollIntoView({ behavior: "smooth" });
   };
 
-  /* const sendMessage = async (event) => {
-    
-  }; */
   return (
     <form onSubmit={(event) => sendMessage(event)} className="send-message">
       <label htmlFor="messageInput" hidden>

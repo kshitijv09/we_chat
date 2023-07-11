@@ -21,7 +21,7 @@ export default function ChatPage({ contact }) {
           },
         }
       );
-      // console.log("Res is", res.data[0].message);
+      //console.log("Res is", res.data[0].message);
       setChatReceived(res.data[0].message);
     }
   };
@@ -61,6 +61,7 @@ export default function ChatPage({ contact }) {
         <h1>WE CHAT</h1>
       </div>
       <div className="prevMsg">
+        {/* {console.log("CHAT", chat)} */}
         {chat.map((msg, index) => {
           return (
             <>
