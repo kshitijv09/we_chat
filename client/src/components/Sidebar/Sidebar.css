@@ -1,8 +1,9 @@
 .sidebar {
-  width: 30%;
+  width: 45%;
   min-height: 100vh;
   border: aqua solid 3px;
   background-color: beige;
+  padding-left: 15px;
 }
 .contact-list {
   border: turquoise solid 2px;
@@ -17,19 +18,19 @@
 
   width: 100;
   border: hotpink solid 1px;
-  height: 80px;
+  height: 100px;
   padding: 10px 5px;
 }
 .contact-img {
-  width: 20%;
+  width: 15%;
   border: brown solid 1px;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 }
 .contact-img img {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 }
 .contact-name {

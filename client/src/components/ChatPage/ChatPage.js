@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import SendMessage from "./SendMessage";
 import { socket } from "../../Socket/Socket";
@@ -6,6 +6,7 @@ import { socket } from "../../Socket/Socket";
 export default function ChatPage({ contact }) {
   const [chat, setChatReceived] = useState([]);
   const [message, setMessageReceived] = useState([]);
+  const scroll = useRef();
 
   const fetchConversation = async () => {
     if (contact) {
@@ -120,10 +121,10 @@ export default function ChatPage({ contact }) {
       <Message key={message.id} message={message} />
     ))}
   </div>} */}
-      {/* when a new message enters the chat, the screen scrolls down to the scroll
-      div
-      <div ref={scroll}></div> */}
-      <SendMessage receiver={contact} />
+      {/*when a new message enters the chat, the screen scrolls down to the scroll
+      div*/}
+      <div ref={scroll}></div>
+      <SendMessage receiver={contact} scroll={scroll} />
     </main>
   );
 }

@@ -4,7 +4,7 @@ import axios from "axios";
 import "./ChatPage.css";
 import { socket } from "../../Socket/Socket";
 
-const SendMessage = ({ receiver }) => {
+const SendMessage = ({ receiver, scroll }) => {
   const sender = localStorage.getItem("username");
 
   const [message, setMessage] = useState("");
@@ -28,6 +28,7 @@ const SendMessage = ({ receiver }) => {
         },
       }
     );
+    scroll.current.scrollIntoView({ behavior: "smooth" });
   };
 
   const sendMessage = (e) => {

@@ -15,7 +15,7 @@ export default function Dashboard(props) {
     setContactName(name);
   };
   return (
-    <div>
+    <div className="dashboard">
       <Sidebar onConfirm={contactHandler} />
       <ChatPage contact={contactName} />
     </div>

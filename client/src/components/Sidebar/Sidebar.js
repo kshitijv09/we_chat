@@ -32,6 +32,9 @@ export default function Sidebar(props) {
       <h1> This is the Sidebar</h1>
       <div className="contact-list">
         {contacts.map((con) => {
+          {
+            console.log(con);
+          }
           return (
             <div className="contact">
               <div className="contact-img">
