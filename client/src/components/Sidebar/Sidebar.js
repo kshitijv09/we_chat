@@ -30,17 +30,25 @@ export default function Sidebar(props) {
   return (
     <div className="sidebar">
       <h1> This is the Sidebar</h1>
-      {contacts.map((con) => {
-        return (
-          <button
-            onClick={() => {
-              sendContact(con);
-            }}
-          >
-            {con}
-          </button>
-        );
-      })}
+      <div className="contact-list">
+        {contacts.map((con) => {
+          return (
+            <div className="contact">
+              <div className="contact-img">
+                <img src="./" />
+              </div>
+              <div
+                className="contact-name"
+                onClick={() => {
+                  sendContact(con);
+                }}
+              >
+                {con}
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
