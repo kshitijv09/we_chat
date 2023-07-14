@@ -1,10 +1,14 @@
 const express = require("express");
+const multer = require("multer");
 const authRouter = require("./routes/Auth");
 const chatRouter = require("./routes/Chat");
+const imageRouter = require("./routes/Image");
 const authenticateUser = require("./middleware/authentication");
 const cors = require("cors");
 const http = require("http");
 const app = express();
+const imageModel = require("./models/Image");
+const fs = require("fs");
 const { Server } = require("socket.io");
 
 require("dotenv").config();
@@ -21,13 +25,45 @@ const server = http.createServer(app);
 
 app.use(cors());
 app.use(express.json());
+/* app.use(bodyParser.urlencoded({ extended: false })); */
 
 app.use("/auth", authRouter);
 app.use("/user", authenticateUser, chatRouter);
+app.use("/", imageRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
+/* const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads");
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}-${req.file.filename}`);
+  },
+});
+
+const upload = multer({ storage: storage });
+
+app.post("/", upload.single("avatarImage"), (req, res) => {
+  const saveImage = imageModel({
+    name: req.body.name,
+    img: {
+      data: fs.readFileSync("uploads/" + req.file.filename),
+      contentType: "image/png",
+    },
+  });
+  saveImage
+    .save()
+    .then((res) => {
+      console.log("image is saved");
+    })
+    .catch((err) => {
+      console.log(err, "error has occur");
+    });
+  res.send("image is saved");
+});
+ */
 const io = new Server(server, {
   cors: {
     origin: "http://localhost:3000",

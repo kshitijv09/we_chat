@@ -57,12 +57,14 @@ export default function ChatPage({ contact }) {
   }, [contact]);
 
   return (
-    <main className="chat-box">
-      <div className="heading">
-        <h1>WE CHAT</h1>
+    <div className="chat-box">
+      <div className="con-heading">
+        <div className="con-img">
+          <img src={require("../../assets/img-0.png")} />
+        </div>
+        <div className="con-name">{contact}</div>
       </div>
       <div className="prevMsg">
-        {/* {console.log("CHAT", chat)} */}
         {chat.map((msg, index) => {
           return (
             <>
@@ -72,11 +74,11 @@ export default function ChatPage({ contact }) {
                 }`}
                 key={index}
               >
-                {/* <img
-    className="chat-bubble__left"
-    src={msg.avatar}
-    alt="user avatar"
-  /> */}
+                <img
+                  className="chat-bubble__left"
+                  src={require("../../assets/img-0.png")}
+                  alt="user avatar"
+                />
                 <div className="chat-bubble__right">
                   <p className="user-name">{msg.sender}</p>
                   <p className="user-message">{msg.message}</p>
@@ -88,10 +90,6 @@ export default function ChatPage({ contact }) {
         })}
       </div>
       <div className="msg">
-        {/* <div className="welcome">
-          <h1>{msg.message}</h1>
-        </div> */}
-
         {message.map((msg, index) => {
           return (
             <>
@@ -101,11 +99,11 @@ export default function ChatPage({ contact }) {
                 }`}
                 key={index}
               >
-                {/* {img
-    className="chat-bubble__left"
-    src={msg.avatar}
-    alt="user avatar"
-  />  */}
+                <img
+                  className="chat-bubble__left"
+                  src={require("../../assets/img-0.png")}
+                  alt="user avatar"
+                />
                 <div className="chat-bubble__right">
                   <p className="user-name">{msg.sender}</p>
                   <p className="user-message">{msg.message}</p>
@@ -116,15 +114,8 @@ export default function ChatPage({ contact }) {
           );
         })}
       </div>
-      {/* {<div className="messages-wrapper">
-    {messages?.map((message) => (
-      <Message key={message.id} message={message} />
-    ))}
-  </div>} */}
-      {/*when a new message enters the chat, the screen scrolls down to the scroll
-      div*/}
       <div ref={scroll}></div>
       <SendMessage receiver={contact} scroll={scroll} />
-    </main>
+    </div>
   );
 }

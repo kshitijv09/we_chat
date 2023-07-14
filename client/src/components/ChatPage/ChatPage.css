@@ -13,41 +13,42 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-/* .App {
+.con-heading {
   width: 100%;
-  min-height: 100vh;
-  background-color: #1c2c4c;
-  color: #4c768d;
-} */
-
-.nav-bar {
-  padding: 10px 30px;
+  height: 100px;
+  border: orange solid 2px;
+  display: flex;
+  padding: 10px 0px 10px 40px;
+}
+.con-name {
+  border: pink solid 1px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background-color: #4c768d;
-  color: #242443;
-  height: 60px;
+  font-size: 2rem;
+  margin-left: 35px;
+  color: white;
 }
-.heading {
-  text-align: center;
-  font-weight: 400;
-  color: #d4f6b6;
-  letter-spacing: 10px;
-  text-decoration: underline;
+.con-heading div img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
 }
 .chat-box {
-  /* border: 8px solid #c8f2f2; */
-  height: 100%;
-  width: 100% !important;
-  overflow: hidden !important;
-  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 85%;
+  overflow-x: hidden;
+  position: static;
   border: green solid 6px;
-  min-height: 100vh;
+  flex-grow: 1;
+  /* min-height: 100vh; */
+  overflow-y: auto;
   /*  background-image: url("https://www.transparenttextures.com/patterns/dark-mosaic.png"); */
 }
 .prevMsg {
-  border: orange solid 2px;
+  /*  border: orange solid 2px; */
   margin-bottom: 40px;
 }
 .welcome {
@@ -69,7 +70,7 @@ input {
 .chat-bubble {
   margin: 0em 1em;
   border-radius: 20px 20px 20px 0;
-  padding: 10px 20px 0px 20px;
+  padding: 10px 20px 0px 10px;
   background-color: #ffffff;
   color: #1c2c4c;
   width: max-content;
@@ -94,7 +95,7 @@ input {
 }
 .user-name {
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 1px;
   font-size: 1.05rem;
   color: #1c2c4c;
 }
@@ -108,7 +109,7 @@ input {
   text-align: right;
 }
 .msg {
-  border: yellow solid 2px;
+  /* border: yellow solid 2px; */
   margin-bottom: 80px;
 }
 /* send message */

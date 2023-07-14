@@ -1,27 +1,28 @@
-import cloudinary from "cloudinary";
-import dotenv from "dotenv";
-dotenv.config();
+const fs = require("fs");
+const imageModel = require("../models/Image");
 
 const uploadImage = (req, res) => {
-  if (!req.file) {
-    res.status(204);
-  } else {
-    try {
-      cloudinary.config({
-        cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-        api_key: process.env.CLOUDINARY_API_KEY,
-        api_secret: process.env.CLOUDINARY_API_SECRET,
-      });
-
-      cloudinary.uploader
-        .upload_stream((result) => {
-          res.status(201).json({ user_avatar_url: result.secure_url });
-        })
-        .end(req.file.buffer);
-    } catch (e) {
-      res.status(500).json({ status: e });
-    }
-  }
+  const saveImage = imageModel({
+    name: req.body.name,
+    img: {
+      data: fs.readFileSync("uploads/" + req.file.filename),
+      contentType: "image/png",
+    },
+  });
+  saveImage
+    .save()
+    .then((res) => {
+      console.log("image is saved");
+    })
+    .catch((err) => {
+      console.log(err, "error has occur");
+    });
+  res.send("image is saved");
 };
 
-export default uploadImage;
+const getImage = async (req, res) => {
+  const allData = await imageModel.find();
+  res.json(allData);
+};
+
+module.exports = { uploadImage, getImage };

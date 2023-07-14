@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Sidebar.css";
 export default function Sidebar(props) {
@@ -38,7 +39,7 @@ export default function Sidebar(props) {
           return (
             <div className="contact">
               <div className="contact-img">
-                <img src="./" />
+                <img src={require("../../assets/img-0.png")} />
               </div>
               <div
                 className="contact-name"
@@ -46,11 +47,26 @@ export default function Sidebar(props) {
                   sendContact(con);
                 }}
               >
-                {con}
+                <div> {con}</div>
+                <div id="status">Available</div>
               </div>
             </div>
           );
         })}
+      </div>
+      <div className="add-contacts">
+        <Link to="/avatar">
+          <button>
+            <span>Add Contacts +</span>
+            <svg
+              viewBox="-5 -5 110 110"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0" />
+            </svg>
+          </button>
+        </Link>
       </div>
     </div>
   );
