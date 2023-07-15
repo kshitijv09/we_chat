@@ -1,0 +1,165 @@
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Titillium Web", sans-serif;
+}
+
+:root {
+  --mainColor: #29335c;
+  --mainColorLight: #5767aa;
+  --secondaryColor: #db2b39;
+}
+
+.icon {
+  margin-top: 1em;
+}
+.icon img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.icon img:hover {
+  transform: rotate(360deg);
+  transition-delay: 0;
+  transition: all 0.5s;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  padding: 0;
+  color: black;
+  margin-left: 100px;
+  /* border: pink solid 2px; */
+}
+
+nav a {
+  margin: 0 3rem;
+  font-size: 1.3rem;
+  /*  color: var(--textColor); */
+  color: black;
+  text-decoration: none;
+}
+
+/* nav a:hover {
+  color: var(--secondaryColor);
+} */
+
+header .nav-btn {
+  padding: 5px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  /* color: var(--textColor); */
+  visibility: hidden;
+  opacity: 0;
+  font-size: 1.8rem;
+}
+
+header div,
+nav {
+  display: flex;
+  align-items: center;
+}
+
+/*animation*/
+nav * {
+  box-sizing: border-box;
+  transition: all 0.35s ease;
+}
+
+nav li {
+  display: inline-block;
+  list-style: outside none none;
+  margin: 0.5em 1em;
+  padding: 0;
+}
+
+nav a {
+  padding: 0.5em 0.8em;
+  /*  color: rgba(255, 255, 255, 0.5); */
+  color: black;
+  position: relative;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+nav a::before,
+nav a::after {
+  content: "";
+  height: 14px;
+  width: 14px;
+  position: absolute;
+  transition: all 0.35s ease;
+  opacity: 0;
+}
+
+nav a::before {
+  content: "";
+  right: 0;
+  top: 0;
+  border-top: 3px solid #9c27b0;
+  border-right: 3px solid #9c27b0b5;
+  transform: translate(-100%, 50%);
+}
+
+nav a:after {
+  content: "";
+  left: 0;
+  bottom: 0;
+  border-bottom: 3px solid #9c27b0;
+  border-left: 3px solid #9c27b0b5;
+  transform: translate(100%, -50%);
+}
+
+nav a:hover:before,
+nav a:hover:after {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+nav a:hover {
+  color: #9c27b0;
+}
+/*animation ends*/
+
+@media only screen and (max-width: 1024px) {
+  header .nav-btn {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  header nav {
+    position: fixed;
+    top: -100vh;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    background-color: var(--mainColor);
+    transition: 1s;
+  }
+
+  header .responsive_nav {
+    transform: translateY(100vh);
+  }
+
+  nav .nav-close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
+
+  nav a {
+    font-size: 50px;
+  }
+}
