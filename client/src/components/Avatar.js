@@ -6,7 +6,7 @@ function Avatar() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5001/file")
+      .get("https://chatapp-v13g.onrender.com/file")
       .then((res) => {
         console.log("Data is", data);
         setData(res.data);
