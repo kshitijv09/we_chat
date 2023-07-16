@@ -1,15 +1,7 @@
 import React from "react";
-/* import "./LandingPage.css"; */
+import "./LandingPage.css";
 import Nav from "../Nav/Nav";
 import { Link } from "react-router-dom";
-
-/* import {
-  ThemeProvider,
-  createMuiTheme,
-  makeStyles,
-} from "@material-ui/core/styles";
-
-const theme = createMuiTheme(); */
 
 export default function LandingPage() {
   return (
@@ -69,9 +61,9 @@ export default function LandingPage() {
                 <div>
                   <img src={require("../../assets/img-1.png")} />
                 </div>
-                <div>
+                <div className="Message-text">
                   <p className="name">Mark Wood</p>
-                  {/* <p className="Message"> Comeback</p> */}
+                  <p className="Message"> Comeback</p>
                 </div>
                 <div className="Message">19:35</div>
               </div>
@@ -79,9 +71,9 @@ export default function LandingPage() {
                 <div>
                   <img src={require("../../assets/img-4.png")} />
                 </div>
-                <div>
+                <div className="Message-text">
                   <p className="name">Peter Parker</p>
-                  <div> Wassup!!</div>
+                  <p> Wassup!!</p>
                 </div>
                 <div className="Message">21:00</div>
               </div>
@@ -89,9 +81,9 @@ export default function LandingPage() {
                 <div>
                   <img src={require("../../assets/img-2.jpg")} />
                 </div>
-                <div>
+                <div className="Message-text">
                   <p className="name">Rebecca F.</p>
-                  {/*  <p className="Message"> Another Day</p> */}
+                  <p className="Message"> Another Day</p>
                 </div>
                 <div className="Message">15:55</div>
               </div>
@@ -124,8 +116,8 @@ export default function LandingPage() {
           <div>around the world</div>
         </div>
         <Link to="/signup">
-          <div className="btn">
-            <button className="btn-btn"> Get Started</button>
+          <div className="btn-X">
+            <button className="btn-btn-Y"> Get Started</button>
           </div>
         </Link>
         <div className="stats">

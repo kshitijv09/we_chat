@@ -10,7 +10,7 @@
 .img-section {
   width: 28%;
   height: 92vh;
-  border: red solid 2px;
+  /*  border: red solid 2px; */
   margin: 30px 0px 0px 30px;
   border-radius: 30px 30px;
   /*  background-image: url("../assets/bkg-5.jpg");
@@ -31,7 +31,7 @@
   transition: transform 0.3s;
   display: flex;
   flex-direction: column;
-  border: pink solid 1px;
+  /* border: pink solid 1px; */
 }
 /* .app-img div {
   height: 50%;
@@ -44,7 +44,7 @@
 }
 .welcome-1,
 .story-heading {
-  border: green solid 2px;
+  /* border: green solid 2px; */
   display: flex;
   justify-content: space-between;
   margin: 20px 10px;
@@ -76,7 +76,7 @@
   height: 60%;
 }
 .contacts-container {
-  border: brown solid 3px;
+  /* border: brown solid 3px; */
   margin: 10px;
   display: flex;
   flex-direction: column;
@@ -87,8 +87,23 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  border: pink solid 2px;
+  /* border: pink solid 2px; */
+  /*  */
+  /* overflow: hidden; */
 }
+.Message-text {
+  flex: 1; /* Allow the text to grow and take up remaining space */
+  /*  overflow: hidden;
+  height: 60px;
+  white-space: nowrap;
+  text-overflow: ellipsis; */
+}
+
+.Message-text p {
+  margin: 0;
+  padding: 0 20px;
+}
+
 /* .contacts div {
   width: 10px;
 } */
@@ -100,10 +115,10 @@
 .Message-text {
   display: flex;
   flex-direction: column;
-  border: aqua solid 1px;
+  /* border: aqua solid 1px; */
 }
 .Message {
-  border: green solid 1px;
+  /* border: green solid 1px; */
   color: #b9bbc1;
 }
 .app-img:hover {
@@ -149,21 +164,21 @@
   animation: stats 2s ease-in-out;
   animation-fill-mode: forwards;
 }
-.btn {
+.btn-X {
   margin-left: 100px;
   margin-top: 40px;
   animation: parabolicX 3s ease-out 1.8s;
   animation-fill-mode: forwards;
   transform: translateX(-600px);
 }
-.btn-btn {
+.btn-btn-Y {
   transform: translateY(-600px); /* rotate(-180deg); */
 
   animation: parabolicY 3s /* s */ 1.8s ease-in, glowing 1300ms infinite 4.8s;
   /* cubic-bezier(0.82, 0.2, 0.4, 0.96) */
   animation-fill-mode: forwards;
 }
-.btn-btn {
+.btn-btn-Y {
   text-align: center;
   cursor: pointer;
   font-size: 24px;
