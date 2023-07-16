@@ -65,29 +65,33 @@ export default function ChatPage({ contact }) {
         <div className="con-name">{contact}</div>
       </div>
       <div className="prevMsg">
-        {chat.map((msg, index) => {
-          return (
-            <>
-              <div
-                className={`chat-bubble ${
-                  msg.sender === localStorage.getItem("username") ? "right" : ""
-                }`}
-                key={index}
-              >
-                <img
-                  className="chat-bubble__left"
-                  src={require("../../assets/img-0.png")}
-                  alt="user avatar"
-                />
-                <div className="chat-bubble__right">
-                  <p className="user-name">{msg.sender}</p>
-                  <p className="user-message">{msg.message}</p>
-                  <p className="message-time"> {msg.createdTime}</p>
+        {chat
+          .filter((msg) => msg.message) // Filter messages with msg.message property
+          .map((msg, index) => {
+            return (
+              <>
+                <div
+                  className={`chat-bubble ${
+                    msg.sender === localStorage.getItem("username")
+                      ? "right"
+                      : ""
+                  }`}
+                  key={index}
+                >
+                  <img
+                    className="chat-bubble__left"
+                    src={require("../../assets/img-0.png")}
+                    alt="user avatar"
+                  />
+                  <div className="chat-bubble__right">
+                    <p className="user-name">{msg.sender}</p>
+                    <p className="user-message">{msg.message}</p>
+                    <p className="message-time"> {msg.createdTime}</p>
+                  </div>
                 </div>
-              </div>
-            </>
-          );
-        })}
+              </>
+            );
+          })}
       </div>
       <div className="msg">
         {message.map((msg, index) => {

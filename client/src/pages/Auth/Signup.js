@@ -55,8 +55,12 @@ export default function Signup() {
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" ref={passwordRef} required />
               </Form.Group>
-
-              <Button disabled={loading} className="w-100" type="submit">
+              <Button
+                disabled={loading}
+                className="w-100"
+                type="submit"
+                style={{ marginTop: "1.2em" }}
+              >
                 Sign Up
               </Button>
             </Form>

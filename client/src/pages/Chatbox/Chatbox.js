@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ChatMsg from "../../components/Comments Section/ChatMsg";
+
 import { socket } from "../../Socket/Socket";
 import { useAuth } from "../../context/AuthContext";
 import "./Chatbox.css";
@@ -32,9 +32,5 @@ export default function Chatbox() {
     setPrevMsg(msg);
   };
 
-  return (
-    <div className="chat-box">
-      <ChatMsg prevMsg={prevMsg} username={username} />
-    </div>
-  );
+  return <div className="chat-box"></div>;
 }

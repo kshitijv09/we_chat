@@ -6,6 +6,7 @@ import Signup from "./pages/Auth/Signup";
 import Login from "./pages/Auth/Login";
 import Chatbox from "./pages/Chatbox/Chatbox";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import AddContact from "./components/AddContact/AddContact";
 import Avatar from "./components/Avatar";
 function App() {
   const router = createBrowserRouter([
@@ -15,6 +16,7 @@ function App() {
     { path: "/dashboard", element: <Dashboard /> },
     { path: "/messages", element: <Chatbox /> },
     { path: "/avatar", element: <Avatar /> },
+    { path: "/add-contact", element: <AddContact /> },
   ]);
   return (
     <AuthProvider>

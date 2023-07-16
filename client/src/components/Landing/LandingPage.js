@@ -1,6 +1,7 @@
 import React from "react";
-import "./LandingPage.css";
+/* import "./LandingPage.css"; */
 import Nav from "../Nav/Nav";
+import { Link } from "react-router-dom";
 
 /* import {
   ThemeProvider,
@@ -16,7 +17,7 @@ export default function LandingPage() {
       <div className="img-section">
         <div className="app-img">
           <div className="upper-sec">
-            <div className="welcome">
+            <div className="welcome-1">
               <div>
                 <div style={{ color: "#b9bbc1", fontSize: "0.8em" }}>
                   Welcome to
@@ -70,9 +71,9 @@ export default function LandingPage() {
                 </div>
                 <div>
                   <p className="name">Mark Wood</p>
-                  <p className="msg"> Comeback</p>
+                  {/* <p className="Message"> Comeback</p> */}
                 </div>
-                <div className="msg">19:35</div>
+                <div className="Message">19:35</div>
               </div>
               <div className="contacts">
                 <div>
@@ -80,9 +81,9 @@ export default function LandingPage() {
                 </div>
                 <div>
                   <p className="name">Peter Parker</p>
-                  <p className="msg"> Wassup!!</p>
+                  <div> Wassup!!</div>
                 </div>
-                <div className="msg">21:00</div>
+                <div className="Message">21:00</div>
               </div>
               <div className="contacts">
                 <div>
@@ -90,19 +91,22 @@ export default function LandingPage() {
                 </div>
                 <div>
                   <p className="name">Rebecca F.</p>
-                  <p className="msg"> Another Day</p>
+                  {/*  <p className="Message"> Another Day</p> */}
                 </div>
-                <div className="msg">15:55</div>
+                <div className="Message">15:55</div>
               </div>
               <div className="contacts">
                 <div>
                   <img src={require("../../assets/img-3.jpg")} />
                 </div>
-                <div>
-                  <p className="name">Bairstow</p>
-                  <p className="msg"> Don't leave</p>
+                <div className="Message-text">
+                  <p className="msg-name">Bairstow</p>
+                  <p className="Message" style={{ marginTop: "0px" }}>
+                    {" "}
+                    Don't leave
+                  </p>
                 </div>
-                <div className="msg">10:05</div>
+                <div className="Message">10:05</div>
               </div>
             </div>
           </div>
@@ -119,9 +123,11 @@ export default function LandingPage() {
           <div>WeChat is a lifestyle for over a billion users</div>
           <div>around the world</div>
         </div>
-        <div className="btn">
-          <button className="btn-btn"> Get Started</button>
-        </div>
+        <Link to="/signup">
+          <div className="btn">
+            <button className="btn-btn"> Get Started</button>
+          </div>
+        </Link>
         <div className="stats">
           <div>
             <div className="stat-no">50K+</div>

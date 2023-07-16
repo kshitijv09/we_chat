@@ -55,7 +55,7 @@ export default function Sidebar(props) {
         })}
       </div>
       <div className="add-contacts">
-        <Link to="/avatar">
+        <Link to="/add-contact">
           <button>
             <span>Add Contacts +</span>
             <svg
