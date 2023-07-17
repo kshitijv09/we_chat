@@ -2,7 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import Modal from "../../UI/Modal/Modal";
+
+import Modal2 from "../../UI/Modal2/Modal2";
 
 export default function AddContact() {
   const usernameRef = useRef();
@@ -35,7 +36,7 @@ export default function AddContact() {
 
   return (
     <>
-      <Modal>
+      <Modal2>
         <Card style={{ width: "450px" }}>
           <Card.Body>
             <h2 className="som">Add Contact</h2>
@@ -57,7 +58,7 @@ export default function AddContact() {
             </Form>
           </Card.Body>
         </Card>
-      </Modal>
+      </Modal2>
     </>
   );
 }
