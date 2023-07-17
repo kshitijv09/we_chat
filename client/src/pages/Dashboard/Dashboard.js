@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import ChatPage from "../../components/ChatPage/ChatPage";
@@ -14,6 +14,7 @@ export default function Dashboard(props) {
     socket.emit("user_joined", { username });
     setContactName(name);
   };
+
   return (
     <div className="dashboard">
       <Sidebar onConfirm={contactHandler} />

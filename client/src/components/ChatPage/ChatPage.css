@@ -13,11 +13,13 @@ body {
 }
 
 .con-heading {
-  width: 100%;
+  position: fixed;
+  top: 0;
+  width: 70%;
   height: 100px;
   border: orange solid 2px;
   display: flex;
-  padding: 10px 0px 10px 40px;
+  padding: 10px 0px 10px 10px;
 }
 .con-name {
   border: pink solid 1px;
@@ -44,11 +46,13 @@ body {
   flex-grow: 1;
   /* min-height: 100vh; */
   overflow-y: auto;
-  /*  background-image: url("https://www.transparenttextures.com/patterns/dark-mosaic.png"); */
+  /* background-image: url("https://www.transparenttextures.com/patterns/dark-mosaic.png"); */
+  background-color: #1f2229;
 }
 .prevMsg {
   /*  border: orange solid 2px; */
-  margin-bottom: 40px;
+
+  margin: 100px 0px 40px 0px;
 }
 .welcome {
   padding: 30px;
@@ -70,11 +74,11 @@ input {
   margin: 0em 1em;
   border-radius: 20px 20px 20px 0;
   padding: 10px 20px 0px 10px;
-  background-color: #ffffff;
-  color: #1c2c4c;
+  background-color: #13151a;
+  color: white;
   width: max-content;
   max-width: calc(100% - 50px);
-  box-shadow: -2px 2px 1px 1px #eae0e0;
+  box-shadow: -2px 2px 1px 1px #060708;
   display: flex;
   align-items: flex-start;
   margin-bottom: 10px;
@@ -82,8 +86,10 @@ input {
 .chat-bubble.right {
   margin-left: auto;
   border-radius: 20px 20px 0 20px;
-  background-color: #d4f6b6;
-  box-shadow: -2px 2px 1px 1px #45c153;
+  /* background-color: #d4f6b6; */
+  background-color: #b785f6;
+  box-shadow: -2px 2px 1px 1px #78458c;
+  color: white;
 }
 .chat-bubble__left {
   width: 35px;
@@ -96,7 +102,8 @@ input {
   font-weight: bold;
   margin-bottom: 1px;
   font-size: 1.05rem;
-  color: #1c2c4c;
+  /* color: #1c2c4c; */
+  color: white;
 }
 .user-message {
   font-size: 1rem;
@@ -114,11 +121,13 @@ input {
 /* send message */
 .send-message {
   position: fixed;
+  /* right: 20px; */
   bottom: 0px;
   width: 70%;
   padding: 20px 30px;
   background-color: #4c768d;
   display: flex;
+  border-radius: 20px;
 }
 .send-message > input {
   height: 40px;
@@ -144,6 +153,6 @@ input {
   border-radius: 0 5px 5px 0;
   color: #242443;
   border: 1px solid #7cc5d9;
-  background-color: #7cc5d9;
+  background-color: #f2fc89;
   font-weight: 600;
 }

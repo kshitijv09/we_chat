@@ -34,36 +34,6 @@ app.use("/", imageRouter);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
-/* const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads");
-  },
-  filename: (req, file, cb) => {
-    cb(null, `${Date.now()}-${req.file.filename}`);
-  },
-});
-
-const upload = multer({ storage: storage });
-
-app.post("/", upload.single("avatarImage"), (req, res) => {
-  const saveImage = imageModel({
-    name: req.body.name,
-    img: {
-      data: fs.readFileSync("uploads/" + req.file.filename),
-      contentType: "image/png",
-    },
-  });
-  saveImage
-    .save()
-    .then((res) => {
-      console.log("image is saved");
-    })
-    .catch((err) => {
-      console.log(err, "error has occur");
-    });
-  res.send("image is saved");
-});
- */
 const io = new Server(server, {
   cors: {
     origin: "http://localhost:3000",
@@ -91,6 +61,7 @@ io.on("connection", (socket) => {
     const { sender, receiver, message, createdTime } = data;
     console.log("On send message", connectedUsers.get(receiver));
     const connectedId = connectedUsers.get(receiver);
+    console.log("Sending to connected id", connectedId);
     if (connectedId) {
       io.to(connectedId).emit("receive_message", {
         sender,

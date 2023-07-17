@@ -9,6 +9,7 @@ export default function ChatPage({ contact }) {
   const scroll = useRef();
 
   const fetchConversation = async () => {
+    // console.log("Real place contact is", contact);
     if (contact) {
       const res = await axios.get(
         `http://localhost:5001/user/chatbox/${localStorage.getItem(
@@ -29,6 +30,12 @@ export default function ChatPage({ contact }) {
 
   const receiveMessage = (data) => {
     console.log("Yolo msg is", data);
+    console.log("Contact is ", contact);
+    console.log("Data.receiver is ", data.receiver);
+    /* if (
+      data.receiver === contact ||
+      data.receiver === localStorage.getItem("username")
+    ) { */
     setMessageReceived((event) => [
       ...event,
       {
@@ -38,11 +45,8 @@ export default function ChatPage({ contact }) {
         createdTime: data.createdTime,
       },
     ]);
+    /*  } */
   };
-  /* socket.on("receive_message", (data) => {
-    console.log("Halleluah", data);
-    return socket.off("receive_message");
-  }); */
 
   useEffect(() => {
     socket.on("receive_message", receiveMessage);
@@ -53,7 +57,10 @@ export default function ChatPage({ contact }) {
   }, [socket]);
 
   useEffect(() => {
+    console.log("Contact while starting is", contact);
     fetchConversation();
+    setMessageReceived([]);
+    console.log("Latest message is", message);
   }, [contact]);
 
   return (

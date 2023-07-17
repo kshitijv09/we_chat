@@ -30,12 +30,19 @@ export default function Sidebar(props) {
 
   return (
     <div className="sidebar">
-      <h1> This is the Sidebar</h1>
+      <div className="my-contact">
+        <div className="contact-img">
+          <img src={require("../../assets/img-0.png")} />
+        </div>
+        <div className="contact-name">
+          <div> {username}</div>
+        </div>
+      </div>
       <div className="contact-list">
         {contacts.map((con) => {
-          {
+          /* {
             console.log(con);
-          }
+          } */
           return (
             <div className="contact">
               <div className="contact-img">
