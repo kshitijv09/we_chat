@@ -6,13 +6,15 @@
   /*  height: 100vh; */
   /* flex-grow: 1; */
   /*  min-height: 100vh; */
-  border: aqua solid 5px;
+  border: aqua solid 2px;
   background-color: beige;
 
   position: static;
   overflow-x: hidden;
   overflow-y: auto;
-  background-image: url("../../assets/bkg-3.jpg");
+  /* background-color: #20232b; */
+  background-color: #131c20;
+  /* background-image: url("../../assets/bkg-3.jpg"); */
 }
 .contact-list {
   padding-left: 15px;
@@ -27,19 +29,36 @@
   flex-direction: row;
   cursor: pointer;
   width: 100%;
-  border: orange solid 1px;
+  border-bottom: aqua solid 1px;
+  background-color: #2a2f32;
   height: 95px;
   padding: 10px 20px;
   margin-bottom: 20px;
+}
+.my-contact-name {
+  width: 80%;
+
+  /* border: red solid 1px; */
+  padding-left: 10px;
+  font-size: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
 }
 .contact {
   display: flex;
   flex-direction: row;
   cursor: pointer;
-  width: 100;
-  border: hotpink solid 1px;
+  width: 98%;
+  border: #333341 solid 1px;
+  border-radius: 3px;
   height: 95px;
   padding: 10px 5px;
+  margin-bottom: 10px;
+}
+.selected {
+  background-color: #383f44;
 }
 .contact-img {
   width: 18%;
@@ -62,9 +81,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: white;
 }
 #status {
   font-size: 1rem;
+  color: #757e83;
 }
 
 .add-contacts {

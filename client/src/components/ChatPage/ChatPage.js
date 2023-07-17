@@ -30,12 +30,7 @@ export default function ChatPage({ contact }) {
 
   const receiveMessage = (data) => {
     console.log("Yolo msg is", data);
-    console.log("Contact is ", contact);
-    console.log("Data.receiver is ", data.receiver);
-    /* if (
-      data.receiver === contact ||
-      data.receiver === localStorage.getItem("username")
-    ) { */
+
     setMessageReceived((event) => [
       ...event,
       {
@@ -45,7 +40,6 @@ export default function ChatPage({ contact }) {
         createdTime: data.createdTime,
       },
     ]);
-    /*  } */
   };
 
   useEffect(() => {
@@ -67,7 +61,7 @@ export default function ChatPage({ contact }) {
     <div className="chat-box">
       <div className="con-heading">
         <div className="con-img">
-          <img src={require("../../assets/img-0.png")} />
+          <img src={require("../../assets/img-2.jpg")} />
         </div>
         <div className="con-name">{contact}</div>
       </div>
@@ -87,7 +81,7 @@ export default function ChatPage({ contact }) {
                 >
                   <img
                     className="chat-bubble__left"
-                    src={require("../../assets/img-0.png")}
+                    src={require("../../assets/avatar-1.png")}
                     alt="user avatar"
                   />
                   <div className="chat-bubble__right">
@@ -112,7 +106,7 @@ export default function ChatPage({ contact }) {
               >
                 <img
                   className="chat-bubble__left"
-                  src={require("../../assets/img-0.png")}
+                  src={require("../../assets/avatar-1.png")}
                   alt="user avatar"
                 />
                 <div className="chat-bubble__right">

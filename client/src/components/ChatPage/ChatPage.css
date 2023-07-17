@@ -15,14 +15,15 @@ body {
 .con-heading {
   position: fixed;
   top: 0;
-  width: 70%;
-  height: 100px;
-  border: orange solid 2px;
+  width: 69.5%;
+  height: 97px;
+  border: aqua solid 1px;
+  background-color: #2a2f32;
   display: flex;
   padding: 10px 0px 10px 10px;
 }
 .con-name {
-  border: pink solid 1px;
+  /* border: pink solid 1px; */
   display: flex;
   align-items: center;
   font-size: 2rem;
@@ -42,7 +43,7 @@ body {
   width: 85%;
   overflow-x: hidden;
   position: static;
-  border: green solid 6px;
+  /* border: green solid 6px; */
   flex-grow: 1;
   /* min-height: 100vh; */
   overflow-y: auto;
@@ -52,7 +53,7 @@ body {
 .prevMsg {
   /*  border: orange solid 2px; */
 
-  margin: 100px 0px 40px 0px;
+  margin: 110px 0px 40px 0px;
 }
 .welcome {
   padding: 30px;
@@ -123,9 +124,9 @@ input {
   position: fixed;
   /* right: 20px; */
   bottom: 0px;
-  width: 70%;
+  width: 69.5%;
   padding: 20px 30px;
-  background-color: #4c768d;
+  background-color: #0d1418;
   display: flex;
   border-radius: 20px;
 }
@@ -135,7 +136,7 @@ input {
   border-radius: 5px 0 0 5px;
   border: none;
   flex-grow: 1;
-  background-color: white;
+  background-color: #33383b;
   color: #1c2c4c;
   font-size: 1rem;
 }

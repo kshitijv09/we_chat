@@ -66,7 +66,7 @@ const SendMessage = ({ receiver, scroll }) => {
         name="messageInput"
         type="text"
         className="form-input__input"
-        placeholder="type message..."
+        placeholder="Type a message..."
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />

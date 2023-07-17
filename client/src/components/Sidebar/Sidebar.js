@@ -4,6 +4,7 @@ import axios from "axios";
 import "./Sidebar.css";
 export default function Sidebar(props) {
   const [contacts, setContacts] = useState([]);
+  const [selectedContact, setSelectedContact] = useState("");
   const username = localStorage.getItem("username");
 
   const fetchContacts = async (props) => {
@@ -24,6 +25,11 @@ export default function Sidebar(props) {
   }, []);
 
   const sendContact = (name) => {
+    if (selectedContact === name) {
+      setSelectedContact("");
+    } else {
+      setSelectedContact(name);
+    }
     console.log("Name is", name);
     props.onConfirm(name);
   };
@@ -32,9 +38,9 @@ export default function Sidebar(props) {
     <div className="sidebar">
       <div className="my-contact">
         <div className="contact-img">
-          <img src={require("../../assets/img-0.png")} />
+          <img src={require("../../assets/img-1.png")} />
         </div>
-        <div className="contact-name">
+        <div className="my-contact-name">
           <div> {username}</div>
         </div>
       </div>
@@ -44,16 +50,15 @@ export default function Sidebar(props) {
             console.log(con);
           } */
           return (
-            <div className="contact">
+            <div
+              key={con}
+              className={`contact ${selectedContact === con ? "selected" : ""}`}
+              onClick={() => sendContact(con)}
+            >
               <div className="contact-img">
-                <img src={require("../../assets/img-0.png")} />
+                <img src={require("../../assets/avatar-1.png")} />
               </div>
-              <div
-                className="contact-name"
-                onClick={() => {
-                  sendContact(con);
-                }}
-              >
+              <div className="contact-name">
                 <div> {con}</div>
                 <div id="status">Available</div>
               </div>
