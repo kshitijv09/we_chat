@@ -1,6 +1,5 @@
 import { useRef } from "react";
-//import { FaBars, FaTimes } from "react-icons/fa";
-/* import { FaBeer } from "react-icons/fa"; */
+import { FaBeer } from "react-icons/fa";
 import "./Nav.css";
 
 function Nav() {
@@ -22,12 +21,13 @@ function Nav() {
         <a href="/#">Blog</a>
         {/* <a href="/#">Sign In</a> */}
         <button className="nav-btn nav-close-btn" onClick={showNavbar}>
-          <img src={require("../../assets/n-0.jfif")} />
+          {/* <img src={require("../../assets/n-0.jfif")} /> */}
+          <FaBeer />
         </button>
       </nav>
 
       <button className="nav-btn" onClick={showNavbar}>
-        <img src={require("../../assets/n-0.jfif")} />
+        <FaBeer />
       </button>
     </header>
   );

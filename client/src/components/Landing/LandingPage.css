@@ -1,10 +1,13 @@
 .outer-container {
+  /*  width: 100vw;
+  max-width: 100%; */
   display: flex;
   flex-direction: row;
   /*  background-image: url("../assets/bkg-1.jpeg"); */
   background-image: url("../../assets/bkg-5.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: hidden;
 }
 
 .img-section {
@@ -22,10 +25,9 @@
   z-index: 0;
 }
 .app-img {
-  width: 70%;
-  height: 85%;
-  margin: 100px auto;
-  /*  margin: auto; */
+  width: 100%;
+  height: 100%;
+  /* margin: 100px auto; */
   background-color: black;
   border-radius: 30px 30px;
   transition: transform 0.3s;
@@ -83,20 +85,14 @@
   justify-content: space-between;
 }
 .contacts {
-  margin-top: 10px;
+  margin: 10px 5px 0px 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   /* border: pink solid 2px; */
-  /*  */
-  /* overflow: hidden; */
 }
 .Message-text {
   flex: 1; /* Allow the text to grow and take up remaining space */
-  /*  overflow: hidden;
-  height: 60px;
-  white-space: nowrap;
-  text-overflow: ellipsis; */
 }
 
 .Message-text p {
@@ -121,10 +117,10 @@
   /* border: green solid 1px; */
   color: #b9bbc1;
 }
-.app-img:hover {
-  /* transform: rotateX(45deg) rotateY(45deg) rotateZ(-45deg); */
+/* .app-img:hover {
+  
   transform: scale3d(1.1, 1.1, 1.1);
-}
+} */
 
 .text-section {
   width: 70%;

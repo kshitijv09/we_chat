@@ -34,7 +34,7 @@ header {
   padding: 0;
   color: black;
   margin-left: 100px;
-  /* border: pink solid 2px; */
+  /*  border: pink solid 2px; */
 }
 
 nav a {
@@ -50,15 +50,14 @@ nav a {
 } */
 
 header .nav-btn {
-  padding: 5px;
-  cursor: pointer;
   background: transparent;
   border: none;
-  outline: none;
-  /* color: var(--textColor); */
-  visibility: hidden;
-  opacity: 0;
+  cursor: pointer;
   font-size: 1.8rem;
+  opacity: 0;
+  outline: none;
+  padding: 5px;
+  visibility: hidden;
 }
 
 header div,
