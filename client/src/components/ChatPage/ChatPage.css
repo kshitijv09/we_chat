@@ -117,7 +117,7 @@ input {
 }
 .msg {
   /* border: yellow solid 2px; */
-  margin-bottom: 80px;
+  margin-bottom: 100px;
 }
 /* send message */
 .send-message {
@@ -137,7 +137,7 @@ input {
   border: none;
   flex-grow: 1;
   background-color: #33383b;
-  color: #1c2c4c;
+  color: white;
   font-size: 1rem;
 }
 .send-message > input:placeholder {

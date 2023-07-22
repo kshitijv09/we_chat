@@ -12,7 +12,7 @@ export default function ChatPage({ contact }) {
     // console.log("Real place contact is", contact);
     if (contact) {
       const res = await axios.get(
-        `http://localhost:5001/user/chatbox/${localStorage.getItem(
+        `https://chatapp-v13g.onrender.com/user/chatbox/${localStorage.getItem(
           "username"
         )}/${contact}`,
         {

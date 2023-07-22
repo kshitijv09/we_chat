@@ -26,7 +26,10 @@ export default function Signup() {
     };
 
     try {
-      await axios.post("http://localhost:5001/auth/signup", userData);
+      await axios.post(
+        "https://chatapp-v13g.onrender.com/auth/signup",
+        userData
+      );
 
       navigate("/");
     } catch (err) {

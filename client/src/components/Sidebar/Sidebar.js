@@ -10,7 +10,7 @@ export default function Sidebar(props) {
   const fetchContacts = async (props) => {
     // console.log("Usernae=me is", username);
     const response = await axios.get(
-      `http://localhost:5001/user/chatbox/${username}`,
+      `https://chatapp-v13g.onrender.com/user/chatbox/${username}`,
       {
         headers: {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,

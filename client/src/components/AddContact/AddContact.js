@@ -19,7 +19,7 @@ export default function AddContact() {
     e.preventDefault();
     const contact = usernameRef.current.value;
     await axios.post(
-      `http://localhost:5001/user/chatbox/${sender}/${contact}`,
+      `https://chatapp-v13g.onrender.com/user/chatbox/${sender}/${contact}`,
       { sender: sender, receiver: contact },
       {
         headers: {

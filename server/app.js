@@ -36,7 +36,7 @@ app.use(errorHandlerMiddleware);
 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "*",
     methods: ["GET", "POST"],
   },
 });
@@ -72,12 +72,24 @@ io.on("connection", (socket) => {
     }
     socket.emit("receive_message", { sender, receiver, message, createdTime });
   });
+
+  socket.on("disconnect", () => {
+    console.log(`User disconnected ${socket.id}`);
+    // Find and remove the disconnected user from the connectedUsers map
+    for (const [username, socketId] of connectedUsers.entries()) {
+      if (socketId === socket.id) {
+        connectedUsers.delete(username);
+        console.log(`${username} disconnected.`);
+        break; // Stop searching after the user is found and removed
+      }
+    }
+  });
 });
 
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URI);
-    server.listen(PORT, () => {
+    server.listen(PORT, "0.0.0.0", () => {
       console.log("Server is Spinning");
     });
   } catch (error) {

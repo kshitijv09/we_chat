@@ -35,7 +35,7 @@ export default function Login() {
     setLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:5001/auth/login",
+        "https://chatapp-v13g.onrender.com/auth/login",
         userData
       );
       //console.log(response);

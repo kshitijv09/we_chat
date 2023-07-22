@@ -11,7 +11,7 @@ const SendMessage = ({ receiver, scroll }) => {
 
   const enterData = async (messageData) => {
     await axios.post(
-      `http://localhost:5001/user/chatbox/${sender}/${receiver}`,
+      `https://chatapp-v13g.onrender.com/user/chatbox/${sender}/${receiver}`,
       messageData,
       {
         headers: {
@@ -20,7 +20,7 @@ const SendMessage = ({ receiver, scroll }) => {
       }
     );
     await axios.post(
-      `http://localhost:5001/user/chatbox/${receiver}/${sender}`,
+      `https://chatapp-v13g.onrender.com/user/chatbox/${receiver}/${sender}`,
       messageData,
       {
         headers: {
