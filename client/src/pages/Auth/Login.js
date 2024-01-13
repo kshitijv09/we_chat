@@ -38,9 +38,7 @@ export default function Login() {
         "https://chatapp-v13g.onrender.com/auth/login",
         userData
       );
-      //console.log(response);
-      /* const data = await response.json();
-      console.log(data); */
+      
       if (response.status === 200) {
         // Save the auth token and redirect
         loginHandler(true);
