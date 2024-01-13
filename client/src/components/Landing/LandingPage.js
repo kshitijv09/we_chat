@@ -136,7 +136,7 @@ export default function LandingPage() {
           <div>WeChat is a lifestyle for over a billion users</div>
           <div>around the world</div>
         </div>
-        <Link to="/signup">
+        <Link to="/login">
           <div className="btn-X">
             <button className="btn-btn-Y"> Get Started</button>
           </div>

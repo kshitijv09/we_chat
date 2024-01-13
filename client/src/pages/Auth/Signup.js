@@ -31,7 +31,7 @@ export default function Signup() {
         userData
       );
 
-      navigate("/");
+      navigate("/dashboard");
     } catch (err) {
       setError("Error msg is " + err.message);
     }

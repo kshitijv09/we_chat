@@ -65,15 +65,21 @@ export default function Login() {
             {error && <Alert variant="danger">{error}</Alert>}
             <Form onSubmit={handleSubmit}>
               <Form.Group id="username">
-                <Form.Label>Username</Form.Label>
+                <Form.Label>Username <span style={{ fontSize: "0.8em", color: "#888", marginLeft: "0.5em" }}>
+        (e.g. user01,user02)
+      </span></Form.Label>
                 <Form.Control type="text" ref={userNameRef} required />
               </Form.Group>
               <Form.Group id="email">
-                <Form.Label>Email</Form.Label>
+                <Form.Label>Email <span style={{ fontSize: "0.8em", color: "#888", marginLeft: "0.5em" }}>
+        (e.g. user01@gmail.com)
+      </span></Form.Label>
                 <Form.Control type="email" ref={emailRef} required />
               </Form.Group>
               <Form.Group id="password">
-                <Form.Label>Password</Form.Label>
+                <Form.Label>Password <span style={{ fontSize: "0.8em", color: "#888", marginLeft: "0.5em" }}>
+        (e.g. user01,user02)
+      </span></Form.Label>
                 <Form.Control type="password" ref={passwordRef} required />
               </Form.Group>
               <Button
